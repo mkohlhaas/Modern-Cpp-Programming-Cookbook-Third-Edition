@@ -1,23 +1,26 @@
 ﻿#pragma once
 
+#include <iostream>
 #include <string>
 
 namespace recipe_2_04
 {
-    void
+    inline void
     f(char)
     {
     }
-    void
+
+    inline void
     f(signed char)
     {
     }
-    void
+
+    inline void
     f(unsigned char)
     {
     }
 
-    void
+    inline void
     execute()
     {
         {
@@ -34,19 +37,19 @@ namespace recipe_2_04
 
         {
 #ifdef __cpp_char8_t
-            char8_t        c = u8'A';
-            const char8_t *s = u8"Æthelflæd";
+            [[maybe_unused]] char8_t        c = u8'A';
+            [[maybe_unused]] const char8_t *s = u8"Æthelflæd";
 #endif
         }
 
         {
-            char16_t        c = u'Æ';
-            const char16_t *s = u"Æthelflæd";
+            [[maybe_unused]] char16_t        c = u'Æ';
+            [[maybe_unused]] const char16_t *s = u"Æthelflæd";
         }
 
         {
-            char32_t        c = U'👏';
-            const char32_t *s = U"🙈🙉🙊";
+            [[maybe_unused]] char32_t        c = U'👏';
+            [[maybe_unused]] const char32_t *s = U"🙈🙉🙊";
         }
 
         {
@@ -55,17 +58,17 @@ namespace recipe_2_04
         }
 
         {
-            auto c1 = 'a';                                            // char
-            auto c2 = L'b';                                           // what_t
-            auto c3 = u8'c';                                          // char8_t in C++20
-            auto c4 = u'd';                                           // char16_t
-            auto c5 = U'e';                                           // char32_t
+            [[maybe_unused]] auto c1 = 'a';                           // char
+            [[maybe_unused]] auto c2 = L'b';                          // what_t
+            [[maybe_unused]] auto c3 = u8'c';                         // char8_t in C++20
+            [[maybe_unused]] auto c4 = u'd';                          // char16_t
+            [[maybe_unused]] auto c5 = U'e';                          // char32_t
 
-            auto sa1 = "a";                                           // const char*
-            auto sa2 = L"a";                                          // const wchar_t*
-            auto sa3 = u8"a";                                         // const char8_t* in C++20
-            auto sa4 = u"a";                                          // const char16_t*
-            auto sa5 = U"a";                                          // const char32_t*
+            [[maybe_unused]] auto sa1 = "a";                          // const char*
+            [[maybe_unused]] auto sa2 = L"a";                         // const wchar_t*
+            [[maybe_unused]] auto sa3 = u8"a";                        // const char8_t* in C++20
+            [[maybe_unused]] auto sa4 = u"a";                         // const char16_t*
+            [[maybe_unused]] auto sa5 = U"a";                         // const char32_t*
         }
 
         {
@@ -87,8 +90,8 @@ namespace recipe_2_04
 
         {
 #ifdef __cpp_named_character_escapes
-            std::u16string hb =
-                u"Harald Bluetooth \N{Runic Letter Long-Branch-Hagall H}\N{Runic Letter Berkanan Beorc Bjarkan B}";
+            // std::u16string hb =
+            //     u"Harald Bluetooth \N{Runic Letter Long-Branch-Hagall H}\N{Runic Letter Berkanan Beorc Bjarkan B}";
             std::u32string eh = U"Egyptian hieroglyphs \N{EGYPTIAN HIEROGLYPH A001} \N{EGYPTIAN HIEROGLYPH M003A}";
 #endif
         }

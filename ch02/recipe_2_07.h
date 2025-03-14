@@ -7,7 +7,7 @@
 
 namespace recipe_2_07
 {
-    void
+    inline void
     monte_carlo_simulation()
     {
         std::array<int, std::mt19937::state_size> seed_data{};
@@ -42,7 +42,7 @@ namespace recipe_2_07
         }
     }
 
-    void
+    inline void
     execute()
     {
         monte_carlo_simulation();

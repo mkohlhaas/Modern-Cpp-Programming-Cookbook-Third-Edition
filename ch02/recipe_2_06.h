@@ -10,7 +10,7 @@
 
 namespace recipe_2_06
 {
-    void
+    inline void
     generate_and_print(std::function<int(void)> gen, int const iterations = 10000)
     {
         // map to store the numbers and  their repetition
@@ -47,7 +47,7 @@ namespace recipe_2_06
         std::cout << '\n';
     }
 
-    void
+    inline void
     execute()
     {
         {

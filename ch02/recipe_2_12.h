@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iomanip>
+#include <iostream>
 #include <regex>
 #include <string>
 
@@ -18,20 +20,20 @@ namespace recipe_2_12
         return std::regex_match(text, rx);
     }
 
-    bool
+    inline bool
     is_valid_email_format(std::string const &email)
     {
         auto rx = std::regex{R"(^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$)"s, std::regex_constants::icase};
         return std::regex_match(email, rx);
     }
 
-    bool
+    inline bool
     is_valid_email_format_w(std::wstring const &text)
     {
         return is_valid_format(LR"(^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$)"s, text);
     }
 
-    std::tuple<bool, std::string, std::string, std::string>
+    inline std::tuple<bool, std::string, std::string, std::string>
     is_valid_email_format_with_result(std::string const &email)
     {
         auto rx      = std::regex{R"(^([A-Z0-9._%+-]+)@([A-Z0-9.-]+)\.([A-Z]{2,})$)"s, std::regex_constants::icase};
@@ -42,7 +44,7 @@ namespace recipe_2_12
                                success ? result[3].str() : ""s);
     }
 
-    void
+    inline void
     execute()
     {
         auto ltest = [](std::string const &email) {

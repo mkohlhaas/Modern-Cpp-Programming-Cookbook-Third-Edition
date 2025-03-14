@@ -7,7 +7,7 @@
 
 namespace recipe_2_02
 {
-    int
+    inline int
     minimum(int const *const start, int const *const end)
     {
         int minval = INT_MAX;
@@ -50,13 +50,13 @@ namespace recipe_2_02
                   << "infinity=" << std::numeric_limits<T>::has_infinity << '\n';
     }
 
-    int
+    inline int
     get_value()
     {
         return 0;
     }
 
-    void
+    inline void
     execute()
     {
         print_type_properties<unsigned short>();

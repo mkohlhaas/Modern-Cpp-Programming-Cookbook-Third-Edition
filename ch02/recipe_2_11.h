@@ -1,7 +1,9 @@
 #pragma once
 
 #include <algorithm>
+#include <sstream>
 #include <string>
+#include <vector>
 
 namespace recipe_2_11
 {
@@ -167,7 +169,7 @@ namespace recipe_2_11
         }
     } // namespace string_library
 
-    void
+    inline void
     execute()
     {
         using namespace std::string_literals;

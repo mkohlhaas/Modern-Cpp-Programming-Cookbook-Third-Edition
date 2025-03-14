@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <regex>
 #include <string>
 
@@ -7,7 +8,7 @@ namespace recipe_2_13
 {
     using namespace std::string_literals;
 
-    void
+    inline void
     execute()
     {
         auto text{

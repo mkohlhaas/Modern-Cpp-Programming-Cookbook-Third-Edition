@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #ifdef __cpp_lib_format
 #include <format>
 #endif
@@ -7,12 +8,11 @@
 #include <chrono>
 #include <ctime>
 #include <iterator>
-#include <string>
 #include <vector>
 
 namespace recipe_2_16
 {
-    void
+    inline void
     execute()
     {
 #ifdef __cpp_lib_format
@@ -46,8 +46,8 @@ namespace recipe_2_16
         }
 
         {
-            char buf[100];
-            auto result = std::format_to_n(buf, sizeof(buf), "{} is {}", "John", 42);
+            char                  buf[100];
+            [[maybe_unused]] auto result = std::format_to_n(buf, sizeof(buf), "{} is {}", "John", 42);
         }
 
         {

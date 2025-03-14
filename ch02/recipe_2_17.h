@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #ifdef __cpp_lib_format
 #include <format>
 #endif
@@ -127,7 +128,7 @@ struct std::formatter<recipe_2_17::v3::employee> : std::formatter<char const *>
 
 namespace recipe_2_17
 {
-    void
+    inline void
     execute()
     {
 #ifdef __cpp_lib_format

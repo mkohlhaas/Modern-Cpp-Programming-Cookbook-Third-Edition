@@ -3,7 +3,6 @@
 #include <array>
 #include <chrono>
 #include <complex>
-#include <string>
 
 namespace recipe_2_09
 {
@@ -16,15 +15,15 @@ namespace recipe_2_09
         }
     } // namespace compunits
 
-    void
+    inline void
     examples_kb()
     {
         using namespace compunits;
 
-        auto size{4_KB};                        // size_t
+        [[maybe_unused]] auto size{4_KB};                        // size_t
 
-        using byte  = unsigned char;
-        auto buffer = std::array<byte, 1_KB>{}; // std::array<unsigned char, 1024>
+        using byte                   = unsigned char;
+        [[maybe_unused]] auto buffer = std::array<byte, 1_KB>{}; // std::array<unsigned char, 1024>
     }
 
     namespace units
@@ -97,62 +96,62 @@ namespace recipe_2_09
         } // namespace unit_literals
     } // namespace units
 
-    void
+    inline void
     example_units()
     {
         using namespace units;
         using namespace unit_literals;
 
-        auto q1{1_kg};
-        auto q2{4.5_kg};
-        auto q3{q1 + q2};
-        auto q4{q2 - q1};
+        auto                  q1{1_kg};
+        auto                  q2{4.5_kg};
+        [[maybe_unused]] auto q3{q1 + q2};
+        [[maybe_unused]] auto q4{q2 - q1};
 
         // auto q5{ 1.0_m + 1_pcs }; // error, cannot add meters and pieces
         // auto q6{ 1_l };   // error, cannot have an integer number of liters
         // auto q7{ 2.0_pcs } // error, can only have an integer number of pieces
     }
 
-    void
+    inline void
     execute()
     {
         {
-            auto b{true};    // boolean
-            auto s{"text"};  // const char[7]
-            auto i{42};      // int
-            auto d{42.5};    // double
-            auto p{nullptr}; // nullptr_t
+            [[maybe_unused]] auto b{true};    // boolean
+            [[maybe_unused]] auto s{"text"};  // const char[7]
+            [[maybe_unused]] auto i{42};      // int
+            [[maybe_unused]] auto d{42.5};    // double
+            [[maybe_unused]] auto p{nullptr}; // nullptr_t
 
-                             // with prefixes
-            auto t1{L"text"};           // const wchar_t[5]
-            auto t2{LR"(has ' and ")"}; // const wchar_t[5]
-            auto hx{0xBAD};             // int (in hexadecimal representation)
+                                              // with prefixes
+            [[maybe_unused]] auto t1{L"text"};           // const wchar_t[5]
+            [[maybe_unused]] auto t2{LR"(has ' and ")"}; // const wchar_t[5]
+            [[maybe_unused]] auto hx{0xBAD};             // int (in hexadecimal representation)
 
-                                        // with suffixes
-            auto a{42u};   // unsigned int
-            auto l{42l};   // signed long
-            auto f{42.5f}; // float
+                                                         // with suffixes
+            [[maybe_unused]] auto a{42u};   // unsigned int
+            [[maybe_unused]] auto l{42l};   // signed long
+            [[maybe_unused]] auto f{42.5f}; // float
         }
 
         {
             using namespace std::string_literals;
-            auto s1{"text"s};  // std::string
-            auto s2{L"text"s}; // std::wstring
-            auto s3{u"text"s}; // std::u16string
-            auto s4{U"text"s}; // std::u32string
+            auto s1{"text"s};                   // std::string
+            auto s2{L"text"s};                  // std::wstring
+            auto s3{u"text"s};                  // std::u16string
+            auto s4{U"text"s};                  // std::u32string
 
             using namespace std::string_view_literals;
-            auto s5{"text"sv}; // std::string_view
+            [[maybe_unused]] auto s5{"text"sv}; // std::string_view
         }
 
         {
             using namespace std::chrono_literals;
-            auto timer{2h + 42min + 15s}; // std::chrono::duration<long long>
+            [[maybe_unused]] auto timer{2h + 42min + 15s}; // std::chrono::duration<long long>
         }
 
         {
             using namespace std::complex_literals;
-            auto c{12.0 + 4.5i}; // std::complex<double>
+            [[maybe_unused]] auto c{12.0 + 4.5i}; // std::complex<double>
         }
 
         examples_kb();

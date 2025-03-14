@@ -65,7 +65,7 @@ namespace recipe_2_10
         } // namespace binary_literals
     } // namespace binary
 
-    void
+    inline void
     execute()
     {
         using namespace binary;
@@ -74,9 +74,9 @@ namespace recipe_2_10
         using namespace binary;
         using namespace binary_literals;
 
-        auto b1 = 1010_b8;
-        auto b2 = 101010101010_b16;
-        auto b3 = 10101010101010101010101_b32;
+        [[maybe_unused]] auto b1 = 1010_b8;
+        [[maybe_unused]] auto b2 = 101010101010_b16;
+        [[maybe_unused]] auto b3 = 10101010101010101010101_b32;
 
         // binary literal b8 must be up to 8 digits long
         // auto b4 = 0011111111_b8;

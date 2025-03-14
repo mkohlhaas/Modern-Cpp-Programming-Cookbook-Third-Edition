@@ -1,10 +1,12 @@
 #pragma once
 
+#include <iostream>
+#include <string>
 #include <string_view>
 
 namespace recipe_2_15
 {
-    std::string
+    inline std::string
     get_filename(std::string const &str)
     {
         auto const pos1{str.find_last_of('\\')};
@@ -12,7 +14,7 @@ namespace recipe_2_15
         return str.substr(pos1 + 1, pos2 - pos1 - 1);
     }
 
-    std::string_view
+    inline std::string_view
     get_filename_view(std::string_view str)
     {
         auto const pos1{str.find_last_of('\\')};
@@ -20,7 +22,7 @@ namespace recipe_2_15
         return str.substr(pos1 + 1, pos2 - pos1 - 1);
     }
 
-    std::string_view
+    inline std::string_view
     trim_view(std::string_view str)
     {
         auto const pos1{str.find_first_not_of(" ")};
@@ -31,7 +33,7 @@ namespace recipe_2_15
         return str;
     }
 
-    void
+    inline void
     execute()
     {
         {
