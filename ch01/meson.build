@@ -1,0 +1,15 @@
+project(
+  'ch01',
+  'cpp',
+  version: '0.1',
+  default_options: ['warning_level=3', 'cpp_std=c++23'],
+)
+
+executable(
+  'ch01',
+  'main.cpp',
+  'recipe_1_11_3.cpp',
+  'recipe_1_11_1.cpp',
+  'recipe_1_11_2.cpp',
+  install: true,
+)

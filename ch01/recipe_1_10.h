@@ -1,0 +1,175 @@
+#pragma once
+
+#include <iostream>
+
+namespace recipe_1_10
+{
+    struct foo
+    {
+        foo()
+        {
+            std::cout << "foo" << '\n';
+        }
+        foo(int const)
+        {
+            std::cout << "foo(a)" << '\n';
+        }
+        foo(int const, double const)
+        {
+            std::cout << "foo(a, b)" << '\n';
+        }
+
+        operator bool() const
+        {
+            return true;
+        }
+    };
+
+    struct foo2
+    {
+        foo2()
+        {
+            std::cout << "foo" << '\n';
+        }
+        foo2(std::initializer_list<int>)
+        {
+            std::cout << "foo(l)" << '\n';
+        }
+        foo2(int const)
+        {
+            std::cout << "foo(a)" << '\n';
+        }
+        foo2(int const, double const)
+        {
+            std::cout << "foo(a, b)" << '\n';
+        }
+
+        operator bool() const
+        {
+            return true;
+        }
+    };
+
+    inline void
+    bar(foo const)
+    {
+    }
+
+    enum ItemSizes
+    {
+        DefaultHeight,
+        Large,
+        MaxSize
+    };
+
+    class string_buffer
+    {
+      public:
+        explicit string_buffer()
+        {
+        }
+
+        explicit string_buffer(size_t const size)
+        {
+            data.resize(size);
+        }
+
+        explicit string_buffer(char const *const ptr) : data(ptr)
+        {
+        }
+
+        size_t
+        size() const
+        {
+            return data.size();
+        }
+        explicit
+        operator bool() const
+        {
+            return !data.empty();
+        }
+        explicit
+        operator char const *() const
+        {
+            return data.c_str();
+        }
+
+      private:
+        std::string data;
+    };
+
+    struct handle_t
+    {
+        explicit handle_t(int const h) : handle(h)
+        {
+        }
+
+        explicit
+        operator bool() const
+        {
+            return handle != 0;
+        };
+
+      private:
+        int handle;
+    };
+
+    inline void
+    execute()
+    {
+        {
+            foo f1;            // foo
+            foo f2{};          // foo
+
+            foo f3(1);         // foo(a)
+            foo f4 = 1;        // foo(a)
+            foo f5{1};         // foo(a)
+            foo f6 = {1};      // foo(a)
+
+            foo f7(1, 2.0);    // foo(a, b)
+            foo f8{1, 2.0};    // foo(a, b)
+            foo f9 = {1, 2.0}; // foo(a, b)
+
+            [[maybe_unused]] bool flag = f1;
+            if (f2)
+            {
+            }
+            std::cout << f3 + f4 << '\n';
+            if (f5 == f6)
+            {
+            }
+        }
+
+        {
+            bar({});       // foo()
+            bar(1);        // foo(a)
+            bar({1, 2.0}); // foo(a, b)
+        }
+
+        {
+            string_buffer b4 = string_buffer('a');
+            string_buffer b5 = static_cast<string_buffer>(MaxSize);
+            string_buffer b6 = string_buffer{"a"};
+
+            string_buffer b7{'a'};
+            string_buffer b8('a');
+
+            // error
+            // std::cout << b4 + b5 << '\n';
+            // if (b4 == b5) {}
+
+            std::cout << static_cast<bool>(b4) + static_cast<bool>(b5) << '\n';
+            if (static_cast<bool>(b4) == static_cast<bool>(b5))
+            {
+            }
+        }
+
+        {
+            auto                  h  = handle_t{42};
+            [[maybe_unused]] bool ok = static_cast<bool>(h);
+            if (h)
+            {
+            }
+        }
+    }
+} // namespace recipe_1_10
